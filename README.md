@@ -19,7 +19,7 @@ Welcome to my GitHub space! I’m passionate about transforming ideas into real-
 ---
 
 ## 📚 **Certifications**  
-
+![PSM I](https://images.credly.com/size/180x180/images/a2790314-008a-4c3d-9553-f5e84eb359ba/image.png)  ![PSPO I](https://images.credly.com/size/180x180/images/591762c5-fae7-49c6-b326-e1756979928d/image.png)
 - **PSM I** Professional Scrum Master  
 - **PSPO I** Professional Scrum Product Owner 
 
