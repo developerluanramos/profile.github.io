@@ -39,3 +39,21 @@ document.addEventListener("DOMContentLoaded", () => {
     setTimeout(digitar, 1000); // Começa após 1s
     setTimeout(digitarSubfrase, 3000); // Começa após 1s
 });
+
+document.addEventListener("DOMContentLoaded", function () {
+    const navbar = document.getElementById("navbar");
+
+    if (!navbar) {
+        console.error("Navbar não encontrada!");
+        return;
+    }
+    
+    window.addEventListener("scroll", function () {
+        // console.log("Scrolling", window.scrollY);
+        if (window.scrollY > 50) {
+            navbar.classList.add("navbar-scrolled");
+        } else {
+            navbar.classList.remove("navbar-scrolled");
+        }
+    });
+});

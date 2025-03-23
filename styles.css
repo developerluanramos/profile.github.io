@@ -8,7 +8,7 @@
 
 body, html {
     width: 100%;
-    height: 100%;
+    height: auto;
     overflow-x: hidden; /* Mantém a rolagem apenas no eixo Y */
     scroll-behavior: smooth;
 }
@@ -43,45 +43,86 @@ video {
     background: rgba(0, 0, 0, 0.5);
 }
 
-/* Cabeçalho */
+/* Menu Transparente Inicialmente */
 header {
-    position: absolute;
-    top: 20px;
+    position: fixed;
+    top: 0;
     left: 50%;
     transform: translateX(-50%);
     width: 90%;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    padding: 15px 20px;
+    background: transparent;
+    transition: background 0.3s ease, box-shadow 0.3s ease;
+    z-index: 1000;
+}
+
+/* Quando rolar a página, o fundo fica branco */
+header.scrolled {
+    background: rgb(26, 23, 190);
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Ajuste na cor dos links quando o fundo for branco */
+header.scrolled nav ul li a {
+    color: black;
+}
+
+header.scrolled nav ul li a:hover {
+    color: #007bff; /* Cor azul ao passar o mouse */
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between; /* Separa logo e links */
+    align-items: center;
+    padding: 10px 20px;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    transition: background 0.3s ease-in-out;
     z-index: 10;
 }
 
-/* Logomarca */
-.logo img {
-    height: 150px;
+.navbar .logo img {
+    height: 100px; /* Ajuste conforme necessário */
+    margin-left: 100px;
+    filter: brightness(0) invert(1); /* A logo começa predominantemente branca */
+    transition: filter 0.3s ease-in-out;
 }
 
-/* Menu */
-nav ul {
+/* Quando rolar a página e o fundo for branco, a logo mantém a cor original */
+.navbar-scrolled .logo img {
+    filter: none; /* Remove o efeito */
+}
+
+.nav-links {
     list-style: none;
     display: flex;
+    gap: 20px; /* Espaçamento entre links */
+    margin-right: 100px;
 }
 
-nav ul li {
-    margin-left: 20px;
-}
-
-nav ul li a {
+.nav-links li a {
     text-decoration: none;
     color: white;
     font-weight: bold;
-    font-size: 18px;
-    transition: 0.3s;
+    transition: color 0.3s;
 }
 
-nav ul li a:hover {
-    color: #f4d03f;
+/* Quando rolar a página */
+.navbar-scrolled {
+    background: white; /* Fundo branco ao rolar */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Pequena sombra */
 }
+
+.navbar-scrolled .nav-links li a {
+    color: black; /* Deixa os links visíveis no fundo branco */
+}
+
 
 .hero {
     position: absolute;
@@ -271,4 +312,201 @@ nav ul li a:hover {
 
 .servico-card button:hover {
     background-color: #0056b3;
+}
+
+/* Estilos do Rodapé */
+footer {
+    background-color: #04032c; /* Cor de fundo do rodapé */
+    color: white;
+    padding: 60px 20px 20px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Efeito de curva no topo do rodapé */
+footer::before {
+    content: '';
+    position: absolute;
+    top: -50px;
+    left: 0;
+    width: 100%;
+    height: 60px;
+    background: #04032c;
+    border-radius: 50% 50% 0 0;
+    z-index: 1;
+}
+
+.footer-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    flex-wrap: wrap;
+    position: relative;
+    z-index: 2;
+    gap: 120px; /* Aumentei o espaçamento entre os itens */
+}
+
+.footer-logo img {
+    height: 200px;
+    margin-bottom: 20px;
+    filter: brightness(0) invert(1);
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.footer-logo img:hover {
+    transform: scale(1.1);
+    opacity: 0.9;
+}
+
+.footer-address {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 20px;
+    border-radius: 15px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.footer-address:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.footer-address h3, .footer-social h3 {
+    font-size: 20px;
+    margin-bottom: 15px;
+    font-weight: 600;
+}
+
+.footer-address p {
+    margin: 5px 0;
+    font-size: 16px;
+    color: #ddd;
+}
+
+.footer-address iframe {
+    margin-top: 10px;
+    border-radius: 10px;
+    border: none;
+    width: 100%;
+    max-width: 300px;
+    height: 200px;
+    transition: transform 0.3s ease;
+}
+
+.footer-address iframe:hover {
+    transform: scale(1.05);
+}
+
+.footer-social {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 20px;
+    border-radius: 15px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.footer-social:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.footer-social ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    gap: 20px;
+}
+
+.footer-social ul li a img {
+    width: 40px;
+    height: 40px;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.footer-social ul li a img:hover {
+    transform: scale(1.2);
+    opacity: 0.8;
+}
+
+.footer-bottom {
+    margin-top: 40px;
+    padding-top: 20px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    font-size: 14px;
+    color: #ccc;
+}
+
+/* Efeito de onda no rodapé */
+footer::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 0;
+    width: 100%;
+    height: 20px;
+    background: #04032c;
+    border-radius: 0 0 50% 50%;
+    z-index: 1;
+}
+
+/* Responsividade para o rodapé */
+@media (max-width: 768px) {
+    .footer-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .footer-logo, .footer-address, .footer-social {
+        margin-bottom: 30px;
+        width: 100%;
+        max-width: 300px;
+    }
+
+    .footer-address iframe {
+        width: 100%;
+        max-width: 100%;
+    }
+
+    .footer-social ul {
+        justify-content: center;
+    }
+}
+
+/* Estilos do Botão do WhatsApp */
+.whatsapp-button {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #25d366; /* Cor verde do WhatsApp */
+    padding: 15px;
+    border-radius: 50%;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.whatsapp-button img {
+    width: 40px;
+    height: 40px;
+}
+
+.whatsapp-button:hover {
+    transform: scale(1.1); /* Aumenta levemente o botão ao passar o mouse */
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+}
+
+/* Responsividade para o botão do WhatsApp */
+@media (max-width: 768px) {
+    .whatsapp-button {
+        bottom: 15px;
+        right: 15px;
+        padding: 12px;
+    }
+
+    .whatsapp-button img {
+        width: 35px;
+        height: 35px;
+    }
 }
