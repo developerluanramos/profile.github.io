@@ -1,0 +1,274 @@
+/* Estilos Gerais */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body, html {
+    width: 100%;
+    height: 100%;
+    overflow-x: hidden; /* Mantém a rolagem apenas no eixo Y */
+    scroll-behavior: smooth;
+}
+
+/* Garante que a frase de efeito fique apenas dentro do vídeo */
+.video-container {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+video {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    min-width: 100%;
+    min-height: 100%;
+    object-fit: cover;
+    filter: blur(5px) brightness(50%);
+}
+
+/* Camada escura para contraste */
+.overlay {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+}
+
+/* Cabeçalho */
+header {
+    position: absolute;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 90%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 10;
+}
+
+/* Logomarca */
+.logo img {
+    height: 150px;
+}
+
+/* Menu */
+nav ul {
+    list-style: none;
+    display: flex;
+}
+
+nav ul li {
+    margin-left: 20px;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+    font-size: 18px;
+    transition: 0.3s;
+}
+
+nav ul li a:hover {
+    color: #f4d03f;
+}
+
+.hero {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    color: white;
+    z-index: 2;
+    width: 90%;
+    pointer-events: none; /* Evita que a frase bloqueie cliques no vídeo */
+}
+
+.hero h1 {
+    font-size: 40px;
+    font-weight: bold;
+    border-right: 3px solid white;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+/* Subfrase */
+.hero h2 {
+    font-size: 24px;
+    font-weight: 300;
+    white-space: nowrap;
+    overflow: hidden;
+    border-right: 3px solid white;
+    margin-top: 10px;
+}
+
+/* 🌟 RESPONSIVIDADE PARA MOBILE */
+@media (max-width: 768px) {
+    video {
+        object-fit: cover;
+        filter: blur(3px) brightness(50%); /* Menos blur para melhor leitura */
+    }
+
+    header {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .logo img {
+        height: 40px;
+    }
+
+    nav ul {
+        margin-top: 10px;
+        flex-direction: column;
+        text-align: center;
+    }
+
+    nav ul li {
+        margin: 10px 0;
+    }
+
+    .hero h1 {
+        font-size: 28px; /* Reduzido para telas menores */
+    }
+
+    .hero h2 {
+        font-size: 18px;
+    }
+}
+
+/* Garante que o vídeo ocupa apenas a primeira tela */
+.video-container {
+    position: relative;
+    width: 100%;
+    height: 100vh; /* Mantém o vídeo ocupando apenas a tela inicial */
+    overflow: hidden;
+}
+
+/* Mantém os elementos sobre o vídeo */
+.overlay-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    color: white;
+    z-index: 2;
+}
+
+/* 🔹 Estiliza a seção de serviços para ficar abaixo do vídeo */
+#servicos {
+    position: relative;
+    z-index: 3;
+    background: #f5f5f5;
+    padding: 80px 5%;
+    margin-top: 0vh; /* Isso garante que ele fique exatamente abaixo do vídeo */
+}
+
+#servicos h2 {
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+    color: #333;
+    text-align: center;
+}
+
+#servicos p {
+    font-size: 1.2rem;
+    color: #555;
+    margin-bottom: 40px;
+}
+
+/* 🌟 CONTAINER DOS SERVIÇOS */
+.servicos-container {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    padding: 50px 20px;
+    background-color: #f7f7f7;
+    flex-wrap: wrap; /* Permite que os cards se ajustem em telas menores */
+    text-align: center; /* Centraliza todo o conteúdo */
+}
+
+/* 🌟 RESPONSIVIDADE */
+@media (max-width: 1024px) {
+    .servicos-container {
+        flex-direction: column;
+        align-items: center;
+    }
+}
+
+.servico-card {
+    background: white;
+    border-radius: 15px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    padding: 30px;
+    width: 520px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    text-align: center;
+    border-top: 5px solid transparent;
+}
+
+/* Imagem responsiva */
+.servico-card img {
+    width: 100%; /* Garante que a imagem ocupe toda a largura do card */
+    height: 400px;
+    max-height: 400px; /* Ajuste o tamanho máximo conforme necessário */
+    object-fit: cover; /* Garante que a imagem se ajuste sem distorcer */
+    border-radius: 10px;
+    margin-bottom: 15px;
+}
+
+.servico-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+}
+
+/* Bordas coloridas para diferenciar os serviços */
+.servico-card:nth-child(1) {
+    border-top-color: #007bff;
+}
+.servico-card:nth-child(2) {
+    border-top-color: #28a745;
+}
+.servico-card:nth-child(3) {
+    border-top-color: #ff5733;
+}
+
+.servico-card h3 {
+    font-size: 22px;
+    font-weight: 700;
+    margin-bottom: 10px;
+}
+
+.servico-card p {
+    font-size: 16px;
+    color: #666;
+}
+
+.servico-card button {
+    display: inline-block;
+    margin-top: 15px;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: bold;
+    transition: background 0.3s ease;
+}
+
+.servico-card button:hover {
+    background-color: #0056b3;
+}
