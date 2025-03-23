@@ -130,28 +130,51 @@ header.scrolled nav ul li a:hover {
     left: 50%;
     transform: translate(-50%, -50%);
     text-align: center;
-    color: white;
     z-index: 2;
     width: 90%;
     pointer-events: none; /* Evita que a frase bloqueie cliques no vídeo */
 }
 
+/* Estilos para o Título (h1) */
 .hero h1 {
-    font-size: 40px;
-    font-weight: bold;
+    font-size: 50px;
+    font-family: 'Poppins', sans-serif; /* Fonte moderna e chamativa */
+    font-weight: 700; /* Negrito */
+    color: rgb(248, 245, 245);
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Sombra no texto */
     border-right: 3px solid white;
     white-space: nowrap;
     overflow: hidden;
+    max-width: 90%; /* Limita a largura do texto */
+    margin: 0 auto; /* Centraliza o texto */
+    letter-spacing: 2px; /* Aumenta o espaçamento entre as letras */
+    animation: blink-caret 0.75s step-end infinite; /* Animação do cursor */
 }
 
-/* Subfrase */
+/* Estilos para a Subfrase (h2) */
 .hero h2 {
-    font-size: 24px;
-    font-weight: 300;
-    white-space: nowrap;
-    overflow: hidden;
+    font-size: 34px;
+    font-family: 'Roboto', sans-serif; /* Fonte moderna e leve */
+    font-weight: 300; /* Peso mais leve */
+    color: rgb(194, 191, 191);
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3); /* Sombra mais suave */
     border-right: 3px solid white;
     margin-top: 10px;
+    max-width: 90%; /* Limita a largura do texto */
+    margin: 0 auto; /* Centraliza o texto */
+    white-space: nowrap;
+    letter-spacing: 1px; /* Espaçamento entre as letras */
+    animation: blink-caret 0.75s step-end infinite; /* Animação do cursor */
+}
+
+/* Animação do cursor piscando */
+@keyframes blink-caret {
+    from, to {
+        border-color: transparent; /* Cursor desaparece */
+    }
+    50% {
+        border-color: white; /* Cursor aparece */
+    }
 }
 
 /* 🌟 RESPONSIVIDADE PARA MOBILE */
@@ -167,14 +190,16 @@ header.scrolled nav ul li a:hover {
         text-align: center;
     }
 
-    .logo img {
+    /* .logo img {
         height: 40px;
-    }
+        text-align: center;
+    } */
 
     nav ul {
         margin-top: 10px;
         flex-direction: column;
         text-align: center;
+        display: none;
     }
 
     nav ul li {
@@ -182,11 +207,29 @@ header.scrolled nav ul li a:hover {
     }
 
     .hero h1 {
-        font-size: 28px; /* Reduzido para telas menores */
+        font-size: 28px; /* Reduz o tamanho da fonte em telas menores */
+        white-space: normal; /* Permite a quebra de linha em telas menores */
+        text-align: center; /* Centraliza o texto */
     }
 
     .hero h2 {
-        font-size: 18px;
+        font-size: 18px; /* Reduz o tamanho da fonte em telas menores */
+        white-space: normal; /* Permite a quebra de linha em telas menores */
+        text-align: center; /* Centraliza o texto */
+    }
+
+    .navbar {
+        justify-content: center; /* Centraliza a logo */
+        padding: 10px; /* Reduz o padding para melhor centralização */
+    }
+
+    .nav-links {
+        display: none; /* Esconde os links do menu */
+    }
+
+    .navbar .logo img {
+        margin-left: 0; /* Remove a margem esquerda da logo */
+        height: 180px; /* Reduz o tamanho da logo em telas menores */
     }
 }
 
@@ -246,16 +289,62 @@ header.scrolled nav ul li a:hover {
 @media (max-width: 1024px) {
     .servicos-container {
         flex-direction: column;
-        align-items: center;
+        align-items: center; /* Centraliza os cards verticalmente */
+        gap: 20px; /* Reduz o espaçamento entre os cards */
+    }
+
+    .servico-card {
+        max-width: 100%; /* Permite que o card ocupe a largura total em telas menores */
     }
 }
 
+.servico-card h3 {
+    font-size: 22px;
+    font-family: 'Montserrat', sans-serif; /* Fonte moderna e chamativa */
+    font-weight: 700; /* Negrito */
+    color: #333; /* Cor escura para contraste */
+    margin-bottom: 15px;
+    letter-spacing: 1px; /* Espaçamento entre as letras */
+    text-transform: uppercase; /* Transforma o texto em maiúsculas */
+}
+
+/* Estilos para os Parágrafos dos Cards (p) */
+.servico-card p {
+    font-size: 16px;
+    font-family: 'Open Sans', sans-serif; /* Fonte limpa e legível */
+    font-weight: 400; /* Peso normal */
+    color: #666; /* Cor mais suave */
+    line-height: 1.6; /* Aumenta o espaçamento entre as linhas */
+    margin-bottom: 20px;
+}
+
+/* Estilos para os Botões dos Cards */
+.servico-card button {
+    display: inline-block;
+    margin-top: 15px;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    font-family: 'Montserrat', sans-serif; /* Fonte moderna para o botão */
+    font-weight: 700; /* Negrito */
+    text-decoration: none;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.3s ease;
+}
+
+.servico-card button:hover {
+    background-color: #0056b3;
+    transform: translateY(-3px); /* Efeito de levantar o botão */
+}
 .servico-card {
     background: white;
     border-radius: 15px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
     padding: 30px;
-    width: 520px;
+    max-width: 520px; /* Define a largura máxima */
+    width: 100%; /* Ocupa 100% da largura disponível */
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     text-align: center;
     border-top: 5px solid transparent;

@@ -3,7 +3,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const video = document.getElementById("bg-video");
 
     video.addEventListener("loadedmetadata", function () {
-        video.currentTime = 13; // Inicia a partir de 20 segundos
+        video.currentTime = 2; // Inicia a partir de 20 segundos
     });
 });
 
